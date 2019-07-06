@@ -5,4 +5,4 @@ RUN pip3 install pipenv
 RUN mkdir -p /usr/src
 RUN git clone https://github.com/koboard/koboard /usr/src/koboard
 WORKDIR /usr/src/koboard
-RUN pipenv sync
+RUN pipenv install --system --ignore-pipfile --deploy
