@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-import django.utils.timezone
+import django.utils.timezone as timezone
 
 class Board(models.Model):
     name = models.CharField(max_length=64, null=False, blank=False)
