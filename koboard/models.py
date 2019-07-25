@@ -5,10 +5,11 @@ class Board(models.Model):
     name = models.CharField(max_length=64, null=False, blank=False)
 
 class Article(models.Model):
+    prev = models.ForeignKey('self', blank=False, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE)
     board = models.ForeignKey(Board, blank=False, null=False, on_delete=models.CASCADE)
-    title = models.CharField(max_length=64, null=False, blank=False)
-    content = models.TextField(null=False, blank=True)
+    title = models.CharField(max_length=64, blank=False, null=False )
+    content = models.TextField(blank=True, null=False)
 
 class File(models.Model):
     article = models.ForeignKey(Article, blank=False, null=False, on_delete=models.CASCADE)
@@ -18,9 +19,10 @@ class Image(models.Model):
     image = models.ImageField()
 
 class Comment(models.Model):
+    prev = models.ForeignKey('self', blank=False, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, blank=False, null=False, on_delete=models.CASCADE)
-    content = models.TextField(null=False, blank=True)
+    content = models.TextField(blank=True, null=False)
 
 class ImageArticleXref(models.Model):
     image = models.ForeignKey(Image, blank=False, null=False, on_delete=models.CASCADE)
