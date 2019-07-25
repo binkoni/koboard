@@ -8,7 +8,7 @@ class Article(models.Model):
     prev = models.ForeignKey('self', blank=False, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE)
     board = models.ForeignKey(Board, blank=False, null=False, on_delete=models.CASCADE)
-    title = models.CharField(max_length=64, blank=False, null=False )
+    title = models.CharField(max_length=64, blank=False, null=False)
     content = models.TextField(blank=True, null=False)
 
 class File(models.Model):
