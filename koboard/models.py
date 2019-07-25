@@ -5,14 +5,14 @@ class Board(models.Model):
     name = models.CharField(max_length=64, null=False, blank=False)
 
 class Article(models.Model):
-    prev = models.ForeignKey('self', blank=False, null=True, on_delete=models.CASCADE)
+    prev = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE)
     board = models.ForeignKey(Board, blank=False, null=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=64, blank=False, null=False)
     content = models.TextField(blank=True, null=False)
 
 class Comment(models.Model):
-    prev = models.ForeignKey('self', blank=False, null=True, on_delete=models.CASCADE)
+    prev = models.ForeignKey('self', blank=True, null=True, on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, blank=False, null=False, on_delete=models.CASCADE)
     content = models.TextField(blank=True, null=False)
