@@ -30,7 +30,6 @@ class ImageArticleXref(models.Model):
     class Meta:
         unique_together = (('image', 'article'),)
 
-
 class ImageCommentXref(models.Model):
     image = models.ForeignKey(Image, blank=False, null=False, on_delete=models.CASCADE)
     comment = models.ForeignKey(Comment, blank=False, null=False, on_delete=models.CASCADE)
